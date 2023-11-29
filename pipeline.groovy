@@ -39,24 +39,12 @@ pipeline {
                 script {
                       sh''' docker tag frontendcicdstudent atharva262002/frontendcicdstudent
                             docker tag backendcicdstudent atharva262002/backendcicdstudent
+                            sh "docker push atharva262002/frontendcicdstudent"
+                            sh "docker push atharva262002/backendcicdstudent"
                       '''
                     }
                 }
 
-                script {
-                    sh "docker push atharva262002/frontendcicdstudent"
-                    sh "docker push atharva262002/backendcicdstudent"
-                }
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Pipeline succeeded! Your Docker image is now on Docker Hub.'
-        }
-        failure {
-            echo 'Pipeline failed! Please check the logs for more information.'
-        }
     }
 }
