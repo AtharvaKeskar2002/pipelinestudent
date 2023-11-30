@@ -13,6 +13,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        sudo chmod -R 777 /home/ubuntu
                         sudo cd /home/ubuntu/student
                         sudo apt install maven -y
                         sudo mvn clean package
