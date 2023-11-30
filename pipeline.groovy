@@ -13,9 +13,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        cd /home/ubuntu/student
+                        sudo cd /home/ubuntu/student
                         sudo apt install maven -y
-                        mvn clean package
+                        sudo mvn clean package
                     '''
                 }
             }
@@ -26,15 +26,15 @@ pipeline {
                 script {
                     git 'https://github.com/AtharvaKeskar2002/docker.git'
                     sh'''
-                        cd /home/ubuntu/student
-                        mv * docker/studentapp
-                        cd ..
-                        cd docker
-                        cd proxy
-                        docker build -t frontendcicdstudent .
-                        cd ..
-                        cd studentapp
-                        docker build -t backendcicdstudent . 
+                        sudo cd /home/ubuntu/student
+                        sudo mv * docker/studentapp
+                        sudo cd ..
+                        sudo cd docker
+                        sudo cd proxy
+                        sudo docker build -t frontendcicdstudent .
+                        sudo cd ..
+                        sudo cd studentapp
+                        sudo docker build -t backendcicdstudent . 
                     '''
                 }
             }
@@ -45,10 +45,10 @@ pipeline {
                 script{
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
                         
-                        sh "docker tag frontendcicdstudent atharav262002/frontendcicdstudent:latest"
-                        sh "docker tag backendcicdstudent atharav262002/backendcicdstudent:latest"
-                        sh "docker push atharav262002/frontendcicdstudent:latest"
-                        sh "docker push atharav262002/backendcicdstudent:latest"
+                        sh "sudo docker tag frontendcicdstudent atharav262002/frontendcicdstudent:latest"
+                        sh "sudo docker tag backendcicdstudent atharav262002/backendcicdstudent:latest"
+                        sh "sudo docker push atharav262002/frontendcicdstudent:latest"
+                        sh "sudo docker push atharav262002/backendcicdstudent:latest"
                    }
                 }
             }
