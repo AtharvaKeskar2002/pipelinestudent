@@ -13,10 +13,14 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        sudo chmod -R 777 /home/ubuntu
-                        sudo cd /home/ubuntu/student
                         sudo apt install maven -y
-                        sudo mvn clean package
+                        sudo cd /home/ubuntu/var/lib/jenkins/workspace/atharva
+                        sudo mvn clean 
+                        sudo mvn package
+                        sudo cd
+                        sudo cd /home/ubuntu/
+                        sudo mkdir project 
+                        sudo mv * /home/ubuntu/project
                     '''
                 }
             }
