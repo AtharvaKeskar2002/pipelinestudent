@@ -12,7 +12,11 @@ pipeline {
         stage('Build Artifact') {
             steps {
                 script {
-                    sh 'mvn clean package'
+                    sh '''
+                        cd /home/ubuntu/student
+                        sudo apt install maven -y
+                        mvn clean package
+                    '''
                 }
             }
         }
@@ -22,7 +26,9 @@ pipeline {
                 script {
                     git 'https://github.com/AtharvaKeskar2002/docker.git'
                     sh'''
+                        cd /home/ubuntu/student
                         mv * docker/studentapp
+                        cd ..
                         cd docker
                         cd proxy
                         docker build -t frontendcicdstudent .
