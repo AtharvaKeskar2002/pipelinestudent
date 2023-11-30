@@ -40,19 +40,18 @@ pipeline {
             }
         }
 
-        stage('Push to Docker Hub') {
-            steps {
-                script {
-                         withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
-                            sh''' docker tag frontendcicdstudent atharva262002/frontendcicdstudent
-                                  docker tag backendcicdstudent atharva262002/backendcicdstudent
-                                  docker push atharva262002/frontendcicdstudent
-                                  docker push atharva262002/backendcicdstudent
-                            '''
-                        }
+        stage ('Build and push to docker hub'){
+            steps{
+                script{
+                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
+                        
+                        sh "docker tag frontendcicdstudent atharav262002/frontendcicdstudent:latest"
+                        sh "docker tag backendcicdstudent atharav262002/backendcicdstudent:latest"
+                        sh "docker push atharav262002/frontendcicdstudent:latest"
+                        sh "docker push atharav262002/backendcicdstudent:latest"
+                   }
                 }
             }
-
         }
     }
 }
