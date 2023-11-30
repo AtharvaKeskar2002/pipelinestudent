@@ -43,14 +43,16 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                      sh''' docker tag frontendcicdstudent atharva262002/frontendcicdstudent
-                            docker tag backendcicdstudent atharva262002/backendcicdstudent
-                            sh "docker push atharva262002/frontendcicdstudent"
-                            sh "docker push atharva262002/backendcicdstudent"
-                      '''
-                    }
+                         withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                            sh''' docker tag frontendcicdstudent atharva262002/frontendcicdstudent
+                                  docker tag backendcicdstudent atharva262002/backendcicdstudent
+                                  docker push atharva262002/frontendcicdstudent
+                                  docker push atharva262002/backendcicdstudent
+                            '''
+                        }
                 }
-
             }
+
+        }
     }
 }
