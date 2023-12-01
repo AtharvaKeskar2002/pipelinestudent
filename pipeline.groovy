@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        mvn clean package -f project/pom.xml
+                        mvn clean package -f pom.xml
                         cd student/target && mv studentapp-2.2-SNAPSHOT.war student.war
                     """
                 }
