@@ -12,15 +12,10 @@ pipeline {
         stage('Build Artifact') {
             steps {
                 script {
-                    sh '''
-                        cd /home/ubuntu/
-                        mvn clean 
-                        mvn package
-                        sudo cd
-                        sudo cd /home/ubuntu/
-                        sudo mkdir project 
-                        sudo mv * /home/ubuntu/project
-                    '''
+                    sh """
+                        mvn clean package -f student/pom.xml
+                        cd student/target && mv studentapp-2.2-SNAPSHOT.war student.war
+                    """
                 }
             }
         }
