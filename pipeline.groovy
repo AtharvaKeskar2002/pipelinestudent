@@ -13,8 +13,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        sudo apt install maven -y
-                        sudo cd /home/ubuntu/var/lib/jenkins/workspace/atharva
+                        sudo cd /home/ubuntu/
                         sudo mvn clean 
                         sudo mvn package
                         sudo cd
