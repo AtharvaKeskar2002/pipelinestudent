@@ -13,9 +13,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        sudo cd /home/ubuntu/
-                        sudo mvn clean 
-                        sudo mvn package
+                        cd /home/ubuntu/
+                        mvn clean 
+                        mvn package
                         sudo cd
                         sudo cd /home/ubuntu/
                         sudo mkdir project 
