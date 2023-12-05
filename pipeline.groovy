@@ -57,7 +57,7 @@ pipeline {
              docker tag backendcicdstudent atharva262002/backendcicdstudent:latest
              docker tag frontendcicdstudent atharva262002/frontendcicdstudent:latest
              docker push atharva262002/backendcicdstudent:latest
-
+             docker push atharva262002/frontendcicdstudent:latest
              '''
 }
                 }
