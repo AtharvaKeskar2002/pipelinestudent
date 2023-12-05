@@ -5,7 +5,7 @@ pipeline {
             steps{
                 script{
                     sh '''
-                    cd /var/lib/jenkins/workspace
+                    cd /var/lib/jenkins/workspace/pipeline1
                     rm -rf *
                     '''
                 }
