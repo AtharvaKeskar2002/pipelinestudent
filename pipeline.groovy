@@ -33,6 +33,12 @@ pipeline {
                 script {
                     git 'https://github.com/AtharvaKeskar2002/docker.git'
                     sh'''
+                        
+                        apt-get update
+                        apt-get install docker.io -y
+                        usermod -aG docker $USER  
+                        newgrp docker
+                        chmod 777 /var/run/docker.sock
                         cd ..
                         mv /var/lib/jenkins/workspace/pipeline1/target/student.war /var/lib/jenkins/workspace/pipeline1/docker/studetnapp
                         cd pipeline1/docker
@@ -50,13 +56,13 @@ pipeline {
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker') {
-             sh '''
-             docker tag backendcicdstudent atharva262002/backendcicdstudent:latest
-             docker tag frontendcicdstudent atharva262002/frontendcicdstudent:latest
-             docker push atharva262002/backendcicdstudent:latest
-             docker push atharva262002/frontendcicdstudent:latest
-             '''
-}
+                    sh '''
+                    docker tag backendcicdstudent atharva262002/backendcicdstudent:latest
+                    docker tag frontendcicdstudent atharva262002/frontendcicdstudent:latest
+                    docker push atharva262002/backendcicdstudent:latest
+                    docker push atharva262002/frontendcicdstudent:latest
+                    '''
+                    }
                 }
             }
         }
