@@ -38,8 +38,7 @@ pipeline {
                     sh'''
                         cd ..
                         mv /var/lib/jenkins/workspace/pipeline1/target/student.war /var/lib/jenkins/workspace/pipeline1/docker/studetnapp
-                        pwd
-                        cd docker
+                        cd pipeline1/docker
                         cd proxy
                         sudo docker build -t frontendcicdstudent .
                         sudo cd ..
