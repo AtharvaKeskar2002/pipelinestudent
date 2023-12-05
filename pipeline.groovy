@@ -13,10 +13,11 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        ROOT_PASSWORD = "1234"
-                        echo "$ROOT_PASSWORD" | su -c "apt update -y"
-                        mvn clean package -f pom.xml
-                        cd pipeline1/target && mv studentapp-2.2-SNAPSHOT.war student.war
+                  ROOT_PASSWORD = "root"
+                  echo "$ROOT_PASSWORD" | su -c "apt update -y"
+
+                  mvn clean package -f pom.xml
+                  cd pipeline1/target && mv studentapp-2.2-SNAPSHOT.war student.war
                     '''
                 }
             }
