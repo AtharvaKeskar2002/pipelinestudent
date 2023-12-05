@@ -54,8 +54,8 @@ pipeline {
                 script{
                    withDockerRegistry(credentialsId: 'docker') {
              sh '''
-             sudo docker tag backendcicdstudent atharav262002/backendcicdstudent:latest
-             sudo docker tag frontendcicdstudent atharav262002/frontendcicdstudent:latest
+             docker tag backendcicdstudent atharav262002/backendcicdstudent:latest
+             docker tag frontendcicdstudent atharav262002/frontendcicdstudent:latest
              docker push atharav262002/backendcicdstudent:latest
 
              '''
