@@ -4,6 +4,11 @@ pipeline {
         stage('git pull') {
             steps {
                 script {
+                    sh '''
+                    echo "root" | su -c "apt update -y"
+                    cd /var/lib/jenkins/workspace
+                    rm -rf *
+                    '''
                     git 'https://github.com/AtharvaKeskar2002/student.git'
                 }
             }
@@ -13,8 +18,6 @@ pipeline {
             steps {
                 script {
                     sh '''
-                  echo "root" | su -c "apt update -y"
-
                   mvn clean package -f pom.xml
                   cd target && mv studentapp-2.2-SNAPSHOT.war student.war
                     '''
@@ -28,7 +31,7 @@ pipeline {
                     git 'https://github.com/AtharvaKeskar2002/docker.git'
                     sh'''
                         cd ..
-                        mv /var/lib/jenkins/pipeline1/target/student.war docker/studentapp
+                        mv /var/lib/jenkins/workspace/pipeline1/target/student.war docker/studentapp
                         cd docker
                         cd proxy
                         sudo docker build -t frontendcicdstudent .
