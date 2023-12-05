@@ -13,8 +13,8 @@ pipeline {
             steps {
                 script {
                     sh """
-                        ROOT = "1234"
                         mvn clean package -f pom.xml
+                        ROOT = "1234"
                         echo "$ROOT" | chmod -R 777 pipeline1
                         cd pipeline1/target && mv studentapp-2.2-SNAPSHOT.war student.war
                     """
