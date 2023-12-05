@@ -14,7 +14,7 @@ pipeline {
                 script {
                     sh """
                         mvn clean package -f pom.xml
-                        cd student/target && mv studentapp-2.2-SNAPSHOT.war student.war
+                        cd pipeline1/target && mv studentapp-2.2-SNAPSHOT.war student.war
                     """
                 }
             }
