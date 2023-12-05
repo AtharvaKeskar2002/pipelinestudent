@@ -12,12 +12,12 @@ pipeline {
         stage('Build Artifact') {
             steps {
                 script {
-                    sh """
-                        mvn clean package -f pom.xml
+                    sh '''
                         ROOT = "1234"
-                        echo "$ROOT" | chmod -R 777 pipeline1
+                        echo "$ROOT" | su -c "apt update -y"
+                        mvn clean package -f pom.xml
                         cd pipeline1/target && mv studentapp-2.2-SNAPSHOT.war student.war
-                    """
+                    '''
                 }
             }
         }
