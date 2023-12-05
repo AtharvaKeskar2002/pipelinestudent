@@ -27,11 +27,10 @@ pipeline {
                 script {
                     git 'https://github.com/AtharvaKeskar2002/docker.git'
                     sh'''
-                        sudo cd /home/ubuntu/student
-                        sudo mv * docker/studentapp
-                        sudo cd ..
-                        sudo cd docker
-                        sudo cd proxy
+                        cd ..
+                        mv /var/lib/jenkins/pipeline1/target/student.war docker/studentapp
+                        cd docker
+                        cd proxy
                         sudo docker build -t frontendcicdstudent .
                         sudo cd ..
                         sudo cd studentapp
