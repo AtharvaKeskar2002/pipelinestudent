@@ -1,14 +1,21 @@
 pipeline {
     agent any
     stages {
-        stage('git pull') {
-            steps {
-                script {
+        stage('delete current workspace'){
+            steps{
+                script{
                     sh '''
                     echo "root" | su -c "apt update -y"
                     cd /var/lib/jenkins/workspace
                     rm -rf *
                     '''
+                }
+            }
+
+        }
+        stage('git pull') {
+            steps {
+                script {
                     git 'https://github.com/AtharvaKeskar2002/student.git'
                 }
             }
