@@ -4,10 +4,7 @@ pipeline {
         stage('delete current workspace'){
             steps{
                 script{
-                    sh '''
-                    cd /var/lib/jenkins/workspace/pipeline1
-                    rm -rf *
-                    '''
+                    cleanWs()
                 }
             }
 
