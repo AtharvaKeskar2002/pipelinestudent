@@ -13,8 +13,9 @@ pipeline {
             steps {
                 script {
                     sh """
+                        sudo -i
                         mvn clean package -f pom.xml
-                        sudo -S chmod -R 777 pipeline1
+                        chmod -R 777 pipeline1
                         cd pipeline1/target && mv studentapp-2.2-SNAPSHOT.war student.war
                     """
                 }
