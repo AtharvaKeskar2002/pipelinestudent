@@ -5,7 +5,6 @@ pipeline {
             steps{
                 script{
                     sh '''
-                    echo "root" | su -c "apt update -y"
                     cd /var/lib/jenkins/workspace
                     rm -rf *
                     '''
