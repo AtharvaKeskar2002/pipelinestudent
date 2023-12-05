@@ -16,7 +16,7 @@ pipeline {
                   echo "root" | su -c "apt update -y"
 
                   mvn clean package -f pom.xml
-                  cd pipeline1/target && mv studentapp-2.2-SNAPSHOT.war student.war
+                  cd target && mv studentapp-2.2-SNAPSHOT.war student.war
                     '''
                 }
             }
