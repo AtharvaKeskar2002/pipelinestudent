@@ -40,10 +40,10 @@ pipeline {
                         mv /var/lib/jenkins/workspace/pipeline1/target/student.war /var/lib/jenkins/workspace/pipeline1/docker/studetnapp
                         cd pipeline1/docker
                         cd proxy
-                        sudo docker build -t frontendcicdstudent .
-                        sudo cd ..
-                        sudo cd studentapp
-                        sudo docker build -t backendcicdstudent . 
+                        docker build -t frontendcicdstudent .
+                        cd ..
+                        cd studentapp
+                        docker build -t backendcicdstudent . 
                     '''
                 }
             }
