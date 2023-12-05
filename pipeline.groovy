@@ -42,7 +42,7 @@ pipeline {
                         cd proxy
                         docker build -t frontendcicdstudent .
                         cd ..
-                        cd studentapp
+                        cd studetnapp
                         docker build -t backendcicdstudent . 
                     '''
                 }
