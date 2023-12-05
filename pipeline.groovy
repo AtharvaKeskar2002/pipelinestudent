@@ -37,7 +37,7 @@ pipeline {
                     git 'https://github.com/AtharvaKeskar2002/docker.git'
                     sh'''
                         cd ..
-                        mv /var/lib/jenkins/workspace/pipeline1/target/student.war /var/lib/jenkins/workspace/pipeline1/docker/studentapp
+                        mv /var/lib/jenkins/workspace/pipeline1/target/student.war /var/lib/jenkins/workspace/pipeline1/docker/studetnapp
                         cd docker
                         cd proxy
                         sudo docker build -t frontendcicdstudent .
