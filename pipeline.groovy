@@ -52,15 +52,17 @@ pipeline {
         stage ('Build and push to docker hub'){
             steps{
                 script{
-                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker') {
-                        
-                        sh "sudo docker tag frontendcicdstudent atharav262002/frontendcicdstudent:latest"
-                        sh "sudo docker tag backendcicdstudent atharav262002/backendcicdstudent:latest"
-                        sh "sudo docker push atharav262002/frontendcicdstudent:latest"
-                        sh "sudo docker push atharav262002/backendcicdstudent:latest"
-                   }
+                   withDockerRegistry(credentialsId: 'docker') {
+             sh '''
+             sudo docker tag backendcicdstudent atharav262002/backendcicdstudent:latest
+             sudo docker tag frontendcicdstudent atharav262002/frontendcicdstudent:latest
+             docker push atharav262002/backendcicdstudent:latest
+
+             '''
+}
                 }
             }
         }
     }
 }
+
